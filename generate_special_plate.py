@@ -1,3 +1,4 @@
+import time
 import cv2, os
 import argparse
 
@@ -26,4 +27,8 @@ if __name__ == '__main__':
 
     generator = MultiPlateGenerator('plate_model', 'font_model')
     img = generator.generate_plate_special(args.plate_number, args.bg_color, args.double)
-    cv2.imwrite('{}.jpg'.format(args.plate_number), img)
+
+    img_path = '{}.jpg'.format(time.time())
+
+    cv2.imwrite(img_path, img)
+    print(img_path)
